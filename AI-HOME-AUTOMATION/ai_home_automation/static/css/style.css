@@ -1,0 +1,265 @@
+/* =================================================
+   RESET & VARIABLES
+   ================================================= */
+:root{
+  --bg: #f6fbff;
+  --panel: #ffffff;
+  --muted: #7f8a98;
+  --accent: #2b7cff;
+  --soft: #e6f0ff;
+  --text: #0b2033;
+  --glass: rgba(255,255,255,0.6);
+  --shadow: 0 8px 28px rgba(12,34,64,0.06);
+}
+
+:root.dark{
+  --bg: #0b1020;
+  --panel: #0f1726;
+  --muted: #9fb0c6;
+  --accent: #60a5fa;
+  --soft: rgba(12,28,52,0.5);
+  --text: #e6eef8;
+  --glass: rgba(255,255,255,0.03);
+  --shadow: 0 8px 28px rgba(2,6,23,0.6);
+}
+
+*{ box-sizing:border-box; }
+
+html,body{
+  height:100%;
+  margin:0;
+  font-family:Inter, "Segoe UI", Roboto, Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.app{
+  display:flex;
+  min-height:100vh;
+  gap:24px;
+  padding:24px;
+}
+
+/* =================================================
+   MODERN SIDEBAR
+   ================================================= */
+.sidebar {
+  width: 240px;
+  height: calc(100vh - 48px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(245,249,255,0.55));
+  padding: 26px 20px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  border: 1px solid rgba(255,255,255,0.5);
+  position: sticky;
+  top: 24px;
+  backdrop-filter: blur(18px);
+  transition: 0.3s ease;
+}
+
+/* Dark mode sidebar */
+body.dark .sidebar {
+  background: linear-gradient(180deg, rgba(16,18,31,0.85), rgba(14,15,25,0.70));
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.55);
+}
+
+/* =================================================
+   LOGO + BRAND SECTION (NEW)
+   ================================================= */
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.logo-img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border-radius: 14px;
+  background: var(--panel);
+  padding: 6px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: 0.25s ease;
+}
+
+
+.logo-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+}
+
+/* Dark mode logo */
+body.dark .logo-img {
+  background: #1a1d28;
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.55);
+}
+
+.brand span {
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--text);
+}
+
+/* =================================================
+   MENU
+   ================================================= */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+  transition: 0.25s ease;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+/* Hover */
+.menu a:hover {
+  background: rgba(43,124,255,0.06);
+  color: var(--accent);
+  border-color: rgba(43,124,255,0.12);
+  transform: translateX(6px);
+}
+
+/* Active Link */
+.menu a.active {
+  background: linear-gradient(135deg, var(--accent), #6aa8ff);
+  color: white;
+  border: none;
+  box-shadow: 0 10px 30px rgba(43,124,255,0.25);
+}
+
+/* Active indicator bar */
+.menu a.active::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 65%;
+  background: var(--accent);
+  border-radius: 8px;
+}
+
+.sidebar-bottom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  padding-top: 20px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* =================================================
+   REST OF YOUR CSS (unchanged)
+   ================================================= */
+
+.workspace{ flex:1; display:flex; flex-direction:column; }
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.topbar h1{ margin:0; }
+.muted{ color:var(--muted); font-size:13px; }
+
+.top-grid{
+  display:grid;
+  grid-template-columns:1fr 320px 260px;
+  gap:18px;
+  margin-bottom:18px;
+}
+
+.card{
+  background:var(--panel);
+  border-radius:12px;
+  padding:16px;
+  box-shadow:var(--shadow);
+}
+
+.card-tiles{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.tile{ padding:12px; border-radius:10px; background:linear-gradient(180deg,var(--glass),var(--panel)); display:flex; flex-direction:column; gap:8px; }
+.tile-title{ font-weight:600; }
+.tile-sub{ font-size:12px; color:var(--muted); }
+.chip{ padding:6px 10px; border-radius:999px; border:none; }
+.chip.on{ background:#e6f8ef; color:#047857; }
+.chip.off{ background:#fff3f2; color:#9b1c1c; }
+
+.gauge-card{ display:flex; align-items:center; justify-content:center; }
+.gauge{ width:220px; height:220px; display:flex; align-items:center; justify-content:center; }
+.gauge-ring{ width:180px; height:180px; border-radius:50%; background:conic-gradient(var(--accent) 0 60%, rgba(0,0,0,0.06) 60%); display:flex; align-items:center; justify-content:center; }
+.gauge-center{ width:132px; height:132px; border-radius:50%; background:var(--panel); display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:var(--shadow); }
+.gauge-temp{ font-size:32px; font-weight:700; }
+.gauge-temp span{ font-size:14px; color:var(--muted); margin-left:4px; }
+.gauge-label{ font-size:12px; color:var(--muted); }
+
+.small-card{ display:flex; flex-direction:column; gap:12px; }
+.stat{ display:flex; justify-content:space-between; align-items:center; }
+.stat-label{ font-size:13px; color:var(--muted); }
+.stat-value{ font-weight:700; }
+
+.main-grid{ display:grid; grid-template-columns:2fr 1fr 320px; gap:18px; }
+.energy-card{ display:flex; flex-direction:column; }
+.card-heading{ display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+
+.devices-list ul{ list-style:none; padding:0; margin:0; }
+.devices-list li{ display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px dashed rgba(0,0,0,0.06); }
+.d-title{ font-weight:600; }
+.d-meta{ color:var(--muted); }
+
+.summary-card .hero{ width:100%; border-radius:8px; margin-bottom:12px; }
+.mini-stats{ display:flex; gap:8px; }
+.mini{ flex:1; background:var(--glass); padding:8px; border-radius:8px; text-align:center; }
+
+.footer{ margin-top:18px; color:var(--muted); }
+
+/* Toggle switch */
+.switch{ position:relative; width:46px; height:26px; display:inline-block; }
+.switch input{ display:none; }
+.slider{ position:absolute; inset:0; background:#cdd9e6; border-radius:20px; }
+.slider:before{ content:""; position:absolute; left:4px; top:4px; width:18px; height:18px; background:#fff; border-radius:50%; transition:0.2s; }
+.switch input:checked + .slider{ background:var(--accent); }
+.switch input:checked + .slider:before{ transform:translateX(20px); }
+
+/* Responsive */
+@media (max-width:1100px){
+  .app{ padding:12px; }
+  .top-grid{ grid-template-columns:1fr 240px 220px; }
+  .main-grid{ grid-template-columns:1fr; }
+  .sidebar{ display:none; }
+}
+
+/* Dark mode */
+body.dark{
+  background:#1a1c23;
+  color:#fff;
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMATOO</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <!-- UPDATED: LOGO + BRAND -->
+        <div class="brand">
+            <img class="logo-img" src="{{ url_for('static', filename='images/hero.jpg') }}" alt="Logo">
+            <span>SMATOO</span>
+        </div>
+
+        <nav class="menu">
+            <a href="{{ url_for('home') }}"
+               class="{% if request.path == '/' %}active{% endif %}">
+                🏠 Dashboard
+            </a>
+
+            <a href="{{ url_for('rooms_page') }}"
+               class="{% if '/rooms' in request.path %}active{% endif %}">
+                🚪 Rooms
+            </a>
+
+            <a href="{{ url_for('devices_page') }}"
+               class="{% if '/devices' in request.path %}active{% endif %}">
+                🔌 Devices
+            </a>
+
+            <a href="{{ url_for('energy_page') }}"
+               class="{% if '/energy' in request.path %}active{% endif %}">
+                ⚡ Energy
+            </a>
+
+            <a href="{{ url_for('settings_page') }}"
+               class="{% if '/settings' in request.path %}active{% endif %}">
+                ⚙️ Settings
+            </a>
+        </nav>
+
+    </aside>
+
+    <main class="workspace">
+        <header class="topbar">
+        <div>
+          <h1>Welcome to Smart Home</h1>
+          <p class="muted">Manage devices, monitor energy & control climate.</p>
+        </div>
+        <div class="profile">Hi, User</div>
+      </header>
+
+      <section class="top-grid">
+        <div class="card card-tiles">
+          <div class="tile">
+            <div class="tile-title">Air Conditioner</div>
+            <div class="tile-sub">Living Room</div>
+            <div class="tile-switch">
+              <button class="chip on">ON</button>
+            </div>
+          </div>
+
+          <div class="tile">
+            <div class="tile-title">WiFi Router</div>
+            <div class="tile-sub">3 Devices</div>
+            <div class="tile-switch">
+              <button class="chip off">OFF</button>
+            </div>
+          </div>
+
+          <div class="tile">
+            <div class="tile-title">Light</div>
+            <div class="tile-sub">Kitchen</div>
+            <div class="tile-switch">
+              <button class="chip on">ON</button>
+            </div>
+          </div>
+
+          <div class="tile">
+            <div class="tile-title">Smart TV</div>
+            <div class="tile-sub">Bedroom</div>
+            <div class="tile-switch">
+              <button class="chip off">OFF</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card gauge-card">
+          <div class="gauge">
+            <div class="gauge-ring">
+              <div class="gauge-center">
+                <div class="gauge-temp">25<span>°C</span></div>
+                <div class="gauge-label">Air Conditioner</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card small-card">
+          <div class="stat">
+            <div class="stat-label">Indoor Temp</div>
+            <div class="stat-value">21°C</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Humidity</div>
+            <div class="stat-value">60%</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Active Devices</div>
+            <div class="stat-value">7</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="main-grid">
+        <div class="card energy-card">
+          <div class="card-heading">
+            <h3>Energy Saving</h3>
+            <div class="muted">Last 7 days</div>
+          </div>
+          <canvas id="energyChart"></canvas>
+        </div>
+
+        <div class="card devices-list">
+          <h3>Active Devices</h3>
+          <ul>
+            <li>
+              <div class="d-title">Smart TV</div>
+              <div class="d-meta">3 hours</div>
+            </li>
+            <li>
+              <div class="d-title">Air Conditioner</div>
+              <div class="d-meta">1 hour</div>
+            </li>
+            <li>
+              <div class="d-title">Washing Machine</div>
+              <div class="d-meta">—</div>
+            </li>
+            <li>
+              <div class="d-title">Living Room Light</div>
+              <div class="d-meta">ON</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card summary-card">
+
+          <!-- UPDATED: HERO IMAGE LOGIC FIXED -->
+          <img class="hero" src="{{ url_for('static', filename='images/hero.jpg') }}" alt="hero">
+
+          <h4>Smart Home Summary</h4>
+          <p class="muted">Quick snapshot of the system. Use the sidebar to open other views.</p>
+
+          <div class="mini-stats">
+            <div class="mini">
+              <div class="mini-label">Temperature</div>
+              <div class="mini-value">21°C</div>
+            </div>
+            <div class="mini">
+              <div class="mini-label">Humidity</div>
+              <div class="mini-value">60%</div>
+            </div>
+            <div class="mini">
+              <div class="mini-label">Rooms</div>
+              <div class="mini-value">6</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">© SMATOO — Smart Home</footer>
+    </main>
+
+</div>
+
+</body>
+</html>
+      
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

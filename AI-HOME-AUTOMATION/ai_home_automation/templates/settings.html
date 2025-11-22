@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+<script src="{{ url_for('static', filename='js/settings.js') }}" defer></script>
+
+<div class="settings-main">
+
+    <div class="settings-header">
+        <h2>⚙️ Settings</h2>
+        <p>Customize your smart home experience</p>
+    </div>
+
+    <div class="settings-container">
+
+        <!-- Profile Card -->
+        <div class="settings-card">
+            <div class="card-title">
+                <span>👤</span>
+                <h3>Profile</h3>
+            </div>
+
+            <label class="label">Username</label>
+            <input class="input-field" type="text" value="User">
+
+            <label class="label">Email</label>
+            <input class="input-field" type="email" value="user@example.com">
+
+            <button class="save-btn">Save Settings</button>
+        </div>
+
+        <!-- Preferences Card -->
+        <div class="settings-card">
+            <div class="card-title">
+                <span>🪄</span>
+                <h3>Preferences</h3>
+            </div>
+
+            <div class="setting-option">
+                <span class="option-label">🔔 Notifications</span>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-option">
+                <span class="option-label">🌙 Dark Mode</span>
+                <label class="switch">
+                    <input id="darkToggle" type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-option">
+                <span class="option-label">🌡️ Auto Climate Control</span>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="setting-option">
+                <span class="option-label">🎵 Voice Assistant</span>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+        </div>
+
+        <!-- System Card -->
+        <div class="settings-card full-row">
+            <div class="card-title">
+                <span>💻</span>
+                <h3>System</h3>
+            </div>
+
+            <div class="system-grid">
+                <div class="sys-item">
+                    <span>📡 Wi-Fi Status</span>
+                    <strong>Connected</strong>
+                </div>
+
+                <div class="sys-item">
+                    <span>🕒 App Version</span>
+                    <strong>1.0.3</strong>
+                </div>
+
+                <div class="sys-item">
+                    <span>💾 Storage</span>
+                    <strong>82% Used</strong>
+                </div>
+
+                <div class="sys-item">
+                    <span>🔐 Security Mode</span>
+                    <strong>Enabled</strong>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

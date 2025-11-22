@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/rooms.css') }}">
+<script src="{{ url_for('static', filename='js/rooms.js') }}" defer></script>
+
+<div class="rooms-main">
+
+    <div class="page-header">
+        <h2>Rooms Overview</h2>
+        <p>Monitor & control all rooms in your smart home</p>
+    </div>
+
+    <div class="rooms-grid">
+
+        {% for room in rooms %}
+        <div class="room-card">
+
+            <!-- Gradient top area -->
+            <div class="room-header">
+                <span class="room-icon">{{ room.icon }}</span>
+                <h3>{{ room.name }}</h3>
+                <span class="device-count">{{ room.devices|length }} Devices</span>
+            </div>
+
+            <!-- Room preview -->
+            <div class="room-preview">
+                <img src="{{ url_for('static', filename='images/room_default.jpg') }}" alt="room">
+            </div>
+
+            <!-- Device list -->
+            <div class="device-list">
+                {% for device in room.devices %}
+                <div class="device-item">
+                    <span class="device-name">💡 {{ device }}</span>
+
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <button class="open-btn">Manage Room →</button>
+
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="brand">
+        <span class="brand-icon">🏠</span>
+        <h2 class="brand-text">SMATOO</h2>
+    </div>
+
+    <nav class="nav-menu">
+
+        <a href="/" class="nav-item {% if request.path=='/' %}active{% endif %}">
+            <span class="icon">📊</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="/rooms" class="nav-item {% if 'rooms' in request.path %}active{% endif %}">
+            <span class="icon">🚪</span>
+            <span>Rooms</span>
+        </a>
+
+        <a href="/devices" class="nav-item {% if 'devices' in request.path %}active{% endif %}">
+            <span class="icon">🔌</span>
+            <span>Devices</span>
+        </a>
+
+        <a href="/energy" class="nav-item {% if 'energy' in request.path %}active{% endif %}">
+            <span class="icon">⚡</span>
+            <span>Energy</span>
+        </a>
+
+        <a href="/settings" class="nav-item {% if 'settings' in request.path %}active{% endif %}">
+            <span class="icon">⚙️</span>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+</div>
+
+
+
+    <div class="content">
+        {% block page_content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

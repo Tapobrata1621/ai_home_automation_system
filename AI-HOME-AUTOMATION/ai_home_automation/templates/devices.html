@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/devices.css') }}">
+<script src="{{ url_for('static', filename='js/devices.js') }}" defer></script>
+
+<div class="rooms-main">
+
+    <div class="page-header">
+        <h2>Devices Overview</h2>
+        <p>Monitor & control all individual devices in your smart home</p>
+    </div>
+
+    <div class="rooms-grid">
+
+        {% for device in devices %}
+        <div class="room-card">
+
+            <!-- Header -->
+            <div class="room-header">
+                <span class="room-icon">🔌</span>
+                <h3>{{ device.name }}</h3>
+                <span class="device-count">In {{ device.room }}</span>
+            </div>
+
+            <!-- Device status -->
+            <div class="device-list">
+                <div class="device-item">
+                    <span class="device-name">⚡ Status</span>
+
+                    <label class="switch">
+                        <input type="checkbox" {% if device.status == "ON" %}checked{% endif %}>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="device-item">
+                    <span class="device-name">⏱ Last Active</span>
+                    <span>{{ device.last_active }}</span>
+                </div>
+            </div>
+
+            <button class="open-btn">Manage Device →</button>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

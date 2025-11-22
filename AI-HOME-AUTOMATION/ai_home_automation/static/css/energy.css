@@ -1,0 +1,42 @@
+@import url('rooms.css');
+
+/* Layout */
+.energy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 30px;
+    margin-top: 25px;
+}
+
+/* Card */
+.energy-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    border: 1px solid #e8ecf5;
+}
+
+.energy-card.full {
+    grid-column: 1 / -1;
+}
+
+/* Header */
+.energy-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #0b1b2b;
+    margin-bottom: 18px;
+}
+
+.energy-icon {
+    font-size: 32px;
+}
+
+/* Value */
+.energy-value {
+    font-size: 40px;
+    font-weight: 700;
+    color: #5f76ff;
+}
